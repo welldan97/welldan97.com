@@ -1,11 +1,5 @@
 module.exports = (grunt) ->
-  grunt.initConfig
-    connect:
-      dev:
-        options:
-          port: 9000
-          base: 'dist'
-          keepalive: true
-
+  require('load-grunt-config')(grunt)
   grunt.loadNpmTasks 'grunt-contrib-connect'
-  grunt.registerTask 'default', ['connect:dev']
+
+  grunt.registerTask 'default', 'connect'
