@@ -1,6 +1,6 @@
 module.exports =
   dev:
     options:
-      port: 9000
-      base: '../build'
+      port: '<%= config.port %>'
+      base: '<%= config.build %>'
       keepalive: true
