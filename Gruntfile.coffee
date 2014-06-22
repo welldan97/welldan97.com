@@ -1,5 +1,7 @@
 module.exports = (grunt) ->
   require('load-grunt-config')(grunt)
+  require('time-grunt')(grunt)
+
 
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'assemble'
