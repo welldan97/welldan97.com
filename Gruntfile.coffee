@@ -3,8 +3,9 @@ module.exports = (grunt) ->
   require('time-grunt')(grunt)
 
 
-  grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-clean'
+  grunt.loadNpmTasks 'grunt-contrib-connect'
+  grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'assemble'
 
@@ -14,4 +15,10 @@ module.exports = (grunt) ->
     'assemble'
   ]
 
-  grunt.registerTask 'default', 'connect'
+  grunt.registerTask 'serve', [
+    'build'
+    'connect'
+    'watch'
+  ]
+
+  grunt.registerTask 'default', 'serve'
