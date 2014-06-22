@@ -1,5 +1,5 @@
 module.exports =
   source: 'source'
-  build: '../build'
+  build: 'build'
 
   port: 9000
