@@ -12,6 +12,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'build', [
     'coffeelint'
     'clean'
+    'sass'
     'assemble'
   ]
 
