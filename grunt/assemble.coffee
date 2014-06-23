@@ -5,10 +5,12 @@ module.exports =
 
     data: '<%= config.source %>/data/**/.{json,yml}'
     helpers: '<%= config.source %>/helpers'
-    layout: 'default.hbs'
+    layout: 'default.jade'
     layoutdir: '<%= config.source %>/layouts/',
-    partials: '<%= config.source %>/partials/**/*.hbs'
+    partials: '<%= config.source %>/partials/**/*.jade'
+
+    engine: 'jade'
 
   pages:
     files:
-      '<%= config.build %>/': ['<%= config.source %>/pages/*.hbs']
+      '<%= config.build %>/': ['<%= config.source %>/pages/*.jade']
