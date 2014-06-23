@@ -9,6 +9,7 @@ module.exports = (grunt) ->
     'coffeelint'
     'clean'
     'sass'
+    'autoprefixer'
     'assemble'
   ]
 
