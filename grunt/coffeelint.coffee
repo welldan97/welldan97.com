@@ -1,4 +1,5 @@
 module.exports =
   options:
     configFile: 'coffeelint.json'
-  grunt: ['./**/*.coffee', '!./node_modules/**/*']
+  grunt: ['grunt/**/*.coffee', 'Gruntfile.coffee']
+  main: ['<%= config.source %>/**/*.coffee']
