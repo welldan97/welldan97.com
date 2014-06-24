@@ -14,9 +14,8 @@ module.exports =
 
   pages:
     files: [
-      cwd: '<%= config.source %>/pages/',
+      cwd: '<%= config.source %>/pages/'
       dest: '<%= config.build %>'
-      expand: true,
+      expand: true
       src: ['**/*.jade']
     ]
-      # '<%= config.temp %>/': ['<%= config.source %>/pages/**/*.jade']
