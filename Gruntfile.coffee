@@ -11,8 +11,6 @@ module.exports = (grunt) ->
     'sass'
     'autoprefixer'
     'assemble'
-    'copy'
-    'inlinecss'
   ]
 
   grunt.registerTask 'serve', [

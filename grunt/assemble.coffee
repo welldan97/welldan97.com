@@ -11,5 +11,10 @@ module.exports =
     engine: 'jade'
 
   pages:
-    files:
-      '<%= config.temp %>/': ['<%= config.source %>/pages/**/*.jade']
+    files: [
+      cwd: '<%= config.source %>/pages/',
+      dest: '<%= config.build %>'
+      expand: true,
+      src: ['**/*.jade']
+    ]
+      # '<%= config.temp %>/': ['<%= config.source %>/pages/**/*.jade']
