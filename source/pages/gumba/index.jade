@@ -1,0 +1,111 @@
+---
+title: Gumba
+---
+.container-fluid
+  .row-fluid
+    .span2
+    .span8
+      h1 Gumba
+
+      p
+        | Gumba is the tool which gives you ability to use coffeescript and
+        a(href="https://github.com/epeli/underscore.string")
+          | underscore.string
+        |  goodness right inside your command line. Think of it as of modern variation of&nbsp;
+        code awk
+        |  or&nbsp;
+        code sed
+        | . So if you like coffeescript and you don't like command line magic, try Gumba!
+
+      p
+        'Take a look at these examples:
+      .well
+        ul.nav.nav-pills
+          li.active
+            a(data-target="#example1-with-gumba" data-toggle="pill")
+              | Gumba
+          li
+            a(data-target="#example1-without-gumba" data-toggle="pill")
+              | Without Gumba
+
+        .tab-content
+          .tab-pane.active#example1-with-gumba
+            pre.command-line
+              i.icon-chevron-right
+              |  echo ' test ' |
+              span.highlight  gumba 'trim()'
+              i.icon-chevron-right
+              |  test
+          .tab-pane#example1-without-gumba
+            pre.command-line.scary
+              i.icon-chevron-right
+              |  echo ' test ' | sed -e 's/^ *//g' -e 's/ *$//g''
+              i.icon-chevron-right
+              |  test
+
+
+      .well
+        ul.nav.nav-pills
+          li.active
+            a(data-target="#example2-with-gumba" data-toggle="pill")
+              | Gumba
+          li
+            a(data-target="#example2-without-gumba" data-toggle="pill")
+              | Without Gumba
+
+        .tab-content
+          .tab-pane.active#example2-with-gumba
+            pre.command-line
+              i.icon-chevron-right
+              |  echo '1234567' |
+              span.highlight  gumba 'toNumber().numberFormat()'
+              i.icon-chevron-right
+              |  1,234,567
+          .tab-pane#example2-without-gumba
+            pre.command-line.scary
+              i.icon-chevron-right
+              |  echo '1234567' | sed -e :a -e 's/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'
+              i.icon-chevron-right
+              |  1,234,567
+
+
+      .well
+        ul.nav.nav-pills
+          li.active
+            a(data-target="#example3-with-gumba" data-toggle="pill")
+              | Gumba
+          li
+            a(data-target="#example3-without-gumba" data-toggle="pill")
+              | Without Gumba
+        .tab-content
+          .tab-pane.active#example3-with-gumba
+            pre.command-line
+              i.icon-chevron-right
+              |  echo 'bulbasaur chermander pikachu' |
+              span.highlight  gumba 'titleize().words().toSentence()'
+              i.icon-chevron-right
+              |  Bulbasaur, Chermander and Pikachu
+          .tab-pane#example3-without-gumba
+            pre.command-line.scary
+              i.icon-chevron-right
+              |  echo 'bulbasaur chermander pikachu' | ?????
+              i.icon-chevron-right
+              |  PROFIT!!!
+      p
+        | Go ahead checkout the docs on
+        a(href="https://github.com/welldan97/gumba")
+          |  GitHub
+        |.
+      p.center
+        a.btn.btn-large(href="https://github.com/welldan97/gumba")
+          i.icon-github-alt
+          |  GitHub
+        | &nbsp;
+        a.btn.btn-large.btn-primary(href="https://twitter.com/share?url=http%3A//gumba.welldan97.com/&text=Gumba%20-%20coffeescript%20and%20underscore.string%20right%20inside%20your%20command%20line")
+          i.icon-twitter
+          |  Share
+
+
+.credits
+  | Developed by&nbsp;
+  a(href="//#{domain}") welldan97

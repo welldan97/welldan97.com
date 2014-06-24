@@ -10,6 +10,8 @@ module.exports =
 
     engine: 'jade'
 
+    domain: '<%= config.domain %>'
+
   pages:
     files: [
       cwd: '<%= config.source %>/pages/',
