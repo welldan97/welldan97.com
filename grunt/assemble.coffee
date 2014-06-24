@@ -1,6 +1,5 @@
 module.exports =
   options:
-    flatten: true
     assets: '<%= config.build %>/assets'
 
     data: '<%= config.source %>/data/**/.{json,yml}'
@@ -13,4 +12,4 @@ module.exports =
 
   pages:
     files:
-      '<%= config.build %>/': ['<%= config.source %>/pages/*.jade']
+      '<%= config.temp %>/': ['<%= config.source %>/pages/**/*.jade']
