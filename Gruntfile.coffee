@@ -5,7 +5,7 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks 'assemble'
 
-  grunt.registerTask 'build', [
+  grunt.registerTask 'build:production', [
     'coffeelint'
     'clean'
     'copy:stylesheets'
@@ -15,6 +15,15 @@ module.exports = (grunt) ->
     'autoprefixer'
     'assemble'
   ]
+
+  grunt.registerTask 'build:development', [
+      'clean'
+      'copy:stylesheets'
+      'copy:bowerBootstrap'
+      'sass'
+      'copy:fontsAndJavascriptsToBuild'
+      'assemble'
+    ]
 
   grunt.registerTask 'serve', [
     'build'
