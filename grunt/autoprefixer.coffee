@@ -5,6 +5,6 @@ module.exports =
     files: [
       expand: true,
       cwd: '<%= config.build %>/assets'
-      src: '{,*/}*.css',
+      src: '{,**/}*.css',
       dest: '<%= config.build %>/assets'
     ]
