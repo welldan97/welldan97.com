@@ -4,7 +4,7 @@ module.exports =
       expand: true
       cwd: '<%= config.source %>/stylesheets'
       src: '{,**/}*.sass'
-      dest: '<%= config.temp %>/build'
+      dest: '<%= config.temp %>/build/stylesheets'
     ]
 
   bowerBootstrap:
