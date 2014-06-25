@@ -3,7 +3,7 @@ module.exports =
     files: [
       expand: true
       cwd: '<%= config.source %>/stylesheets'
-      src: ['*.sass']
+      src: '{,**/}*.sass'
       dest: '<%= config.temp %>/build'
     ]
 
