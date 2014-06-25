@@ -8,7 +8,7 @@ module.exports =
     tasks: ['copy']
 
   sass:
-    files: ['<%= config.source %>/styles/**/*.{scss,sass}']
+    files: ['<%= config.source %>/stylesheets/**/*.{scss,sass}']
     tasks: ['sass']
 
   livereload:
