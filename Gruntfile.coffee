@@ -26,7 +26,7 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'serve', [
-    'build'
+    'build:development'
     'connect'
     'watch'
   ]
