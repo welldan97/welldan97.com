@@ -17,13 +17,13 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'build:development', [
-      'clean'
-      'copy:stylesheets'
-      'copy:bowerBootstrap'
-      'sass'
-      'copy:fontsAndJavascriptsToBuild'
-      'assemble'
-    ]
+    'clean'
+    'copy:stylesheets'
+    'copy:bowerBootstrap'
+    'sass'
+    'copy:fontsAndJavascriptsToBuild'
+    'assemble'
+  ]
 
   grunt.registerTask 'serve', [
     'build'
