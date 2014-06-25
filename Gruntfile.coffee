@@ -12,8 +12,10 @@ module.exports = (grunt) ->
     'copy:bowerBootstrap'
     'sass'
     'copy:fontsAndJavascriptsToBuild'
-    'autoprefixer'
     'assemble'
+    'autoprefixer'
+    'rev'
+    'usemin'
   ]
 
   grunt.registerTask 'build:development', [
