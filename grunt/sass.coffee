@@ -5,8 +5,8 @@ module.exports =
   main:
     files: [
       expand: true
-      cwd: '<%= config.source %>/stylesheets'
-      src: ['*.sass']
-      dest: '<%= config.build %>/assets'
-      ext: '.css'
+      cwd:    '<%= config.temp %>/build'
+      src:    '{,**/}*.{sass,scss}'
+      dest:   '<%= config.build %>/assets/stylesheets'
+      ext:    '.css'
     ]

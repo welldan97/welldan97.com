@@ -8,7 +8,10 @@ module.exports = (grunt) ->
   grunt.registerTask 'build', [
     'coffeelint'
     'clean'
+    'copy:stylesheets'
+    'copy:bowerBootstrap'
     'sass'
+    'copy:fontsAndJavascriptsToBuild'
     'autoprefixer'
     'assemble'
   ]

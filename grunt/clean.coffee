@@ -1,2 +1,3 @@
 module.exports =
-  ['<%= config.build %>/**/*']
+  build: '<%= config.build %>/**/*'
+  temp:  '<%= config.temp %>/**/*'
