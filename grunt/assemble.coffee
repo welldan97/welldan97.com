@@ -10,7 +10,7 @@ module.exports =
 
     engine: 'jade'
 
-    domain: '<%= config.domain %>'
+    config: '<%= config %>'
 
   pages:
     files: [
