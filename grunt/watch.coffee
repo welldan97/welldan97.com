@@ -1,15 +1,19 @@
 module.exports =
-  assemble:
-    files: ['<%= config.source %>/**/*']
-    tasks: ['assemble']
-
-  copy:
-    files: ['<%= config.temp %>/source/**/*']
-    tasks: ['copy']
+  copyStylesheets:
+    files: ['<%= config.source %>/stylesheets/**/*']
+    tasks: ['copy:stylesheets']
 
   sass:
-    files: ['<%= config.source %>/stylesheets/**/*.{scss,sass}']
+    files: ['<%= config.temp %>/build/**/*.{scss,sass}']
     tasks: ['sass']
+
+  copyFontsAndJavascriptsToBuild:
+    files: ['<%= config.temp %>/build/{fonts,javascripts}/**/*']
+    tasks: ['copy:fontsAndJavascriptsToBuild']
+
+  assemble:
+    files: ['<%= config.source %>/{data,helpers,layouts,pages,partials}/**/*']
+    tasks: ['assemble']
 
   livereload:
     options:
