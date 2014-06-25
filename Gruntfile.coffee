@@ -16,6 +16,7 @@ module.exports = (grunt) ->
     'autoprefixer'
     'rev'
     'usemin'
+    'htmlmin'
   ]
 
   grunt.registerTask 'build:development', [
