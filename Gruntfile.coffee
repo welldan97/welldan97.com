@@ -30,8 +30,13 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'serve', [
     'build:development'
-    'connect'
+    'connect:main'
     'watch'
+  ]
+
+  grunt.registerTask 'preview', [
+    'build:production'
+    'connect:keepalive'
   ]
 
   grunt.registerTask 'default', 'serve'

@@ -6,3 +6,8 @@ module.exports =
   main:
     options:
       base: '<%= config.build %>'
+
+  keepalive:
+    options:
+      keepalive: true
+      base: '<%= config.build %>'
