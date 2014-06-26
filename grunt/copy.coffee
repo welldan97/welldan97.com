@@ -4,23 +4,32 @@ module.exports =
       expand: true
       cwd: '<%= config.source %>/stylesheets'
       src: '{,**/}*.sass'
-      dest: '<%= config.temp %>/build/stylesheets'
+      dest: '<%= config.temp %>/build/assets/stylesheets'
     ]
 
   bowerBootstrap:
     files: [
-      expand: true,
-      dot: true,
-      cwd: 'bower_components/bootstrap-sass-official/vendor/assets',
-      dest: '<%= config.temp %>/build',
+      expand: true
+      dot: true
+      cwd: 'bower_components/bootstrap-sass-official/vendor'
+      dest: '<%= config.temp %>/build'
       src:  '{,**/}*'
     ]
 
-  fontsAndJavascriptsToBuild:
+  fromTempToBuild:
+    files: [
+      expand: true
+      dot:  true
+      cwd:  '<%= config.temp %>/build'
+      dest: '<%= config.build %>'
+      src:  ['{,**/}*', '!{,**}*.{sass,scss}']
+    ]
+
+  vendor:
     files: [
       expand: true,
       dot: true,
-      cwd: '<%= config.temp %>/build'
-      dest: '<%= config.build %>/assets',
-      src:  '{fonts,javascripts}/**/*'
+      cwd: '<%= config.vendor %>'
+      dest: '<%= config.temp %>/build'
+      src:  '{,**/}*'
     ]

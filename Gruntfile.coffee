@@ -7,12 +7,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'build:production', [
     'coffeelint'
-    'clean'
-    'copy:stylesheets'
-    'copy:bowerBootstrap'
-    'sass'
-    'copy:fontsAndJavascriptsToBuild'
-    'assemble'
+    'build:development'
     'autoprefixer'
     'rev'
     'usemin'
@@ -22,9 +17,10 @@ module.exports = (grunt) ->
   grunt.registerTask 'build:development', [
     'clean'
     'copy:stylesheets'
+    'copy:vendor'
     'copy:bowerBootstrap'
     'sass'
-    'copy:fontsAndJavascriptsToBuild'
+    'copy:fromTempToBuild'
     'assemble'
   ]
 
