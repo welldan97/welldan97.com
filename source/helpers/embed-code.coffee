@@ -3,8 +3,10 @@ highlight = require('highlight.js').highlight
 
 module.exports.embedCode = (path, options) ->
   contents = grunt.file.read(pathToFile(path, options.page))
-  code = highlight(language(path), contents).value
-  "<pre>#{code}</pre>"
+  highlightObject = highlight(language(path), contents)
+  """
+  <pre class="hljs #{highlightObject.language}">#{highlightObject.value}</pre>
+  """
 
 pathToFile = (path, page) ->
   dir = page.src
@@ -13,5 +15,10 @@ pathToFile = (path, page) ->
 
   "#{dir}/#{page.basename}/#{path}"
 
+languageMap =
+  hs: 'haskell'
+  json: 'json'
+
 language = (path) ->
-  path.replace(/.*\./,'')
+  extension = path.replace(/.*\./,'')
+  languageMap[extension]
