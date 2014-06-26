@@ -6,7 +6,7 @@
   "license": "MIT",
   "devDependencies": {
     "assemble": "git://github.com/welldan97/assemble",
-    "assemble-jade": "^0.1.4",
+    "assemble-jade": "^0.1.6",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^0.7.6",
     "grunt-coffeelint": "0.0.10",
@@ -17,8 +17,8 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-inline-css": "^0.1.4",
     "grunt-rev": "~0.1.0",
-    "grunt-usemin": "~2.1.0",
     "grunt-sass": "^0.14.0",
+    "grunt-usemin": "~2.1.0",
     "load-grunt-config": "^0.10.0",
     "load-grunt-tasks": "^0.6.0",
     "marked": "^0.2.10",
