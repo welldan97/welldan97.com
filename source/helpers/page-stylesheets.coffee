@@ -1,4 +1,4 @@
-module.exports.pageStyles = (page, config) ->
+module.exports.pageStylesheets = (page, config) ->
 
   stylesheets = page.data.stylesheets || []
 
