@@ -7,15 +7,6 @@ module.exports =
       dest: '<%= config.temp %>/build/assets/stylesheets'
     ]
 
-  bowerBootstrap:
-    files: [
-      expand: true
-      dot: true
-      cwd: 'bower_components/bootstrap-sass-official/vendor'
-      dest: '<%= config.temp %>/build'
-      src:  '{,**/}*'
-    ]
-
   fromTempToBuild:
     files: [
       expand: true
@@ -31,5 +22,23 @@ module.exports =
       dot: true,
       cwd: '<%= config.vendor %>'
       dest: '<%= config.temp %>/build'
+      src:  '{,**/}*'
+    ]
+
+  bowerBootstrap:
+    files: [
+      expand: true
+      dot: true
+      cwd: 'bower_components/bootstrap-sass-official/vendor'
+      dest: '<%= config.temp %>/build'
+      src:  '{,**/}*'
+    ]
+
+  bowerD3:
+    files: [
+      expand: true
+      dot: true
+      cwd: 'bower_components/d3.js'
+      dest: '<%= config.temp %>/build/assets/javsacripts'
       src:  '{,**/}*'
     ]
