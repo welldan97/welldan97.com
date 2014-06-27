@@ -1,14 +1,13 @@
 module.exports.pageAssetsCollection = (options, type) ->
   page = options.page
   assets = page.data[type] || []
+  assets.concat(pageSpecificAssets(page, options.config.build))
 
-  dirname = page.dirname
-      .replace(new RegExp("#{options.config.build}/?"), '')
 
-  defaultPageAsset = if dirname == ''
-    "#{page.basename}"
+pageSpecificAssets = (page, build) ->
+  dirname = page.dirname.replace(new RegExp("#{build}/?"), '')
+
+  if dirname == ''
+    ["#{page.basename}"]
   else
-    "#{dirname}/#{page.basename}"
-
-  assets.push(defaultPageAsset)
-  assets
+    ["#{dirname}/#{page.basename}", dirname]
