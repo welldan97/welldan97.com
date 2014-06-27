@@ -1,15 +1,22 @@
 module.exports =
-  copyStylesheets:
-    files: ['<%= config.source %>/stylesheets/**/*']
-    tasks: ['copy:stylesheets']
+  copyAssets:
+    files: ['<%= config.source %>/{stylesheets,javascripts}/**/*']
+    tasks: ['copy:assets']
 
   sass:
     files: ['<%= config.temp %>/build/**/*.{scss,sass}']
     tasks: ['sass']
 
-  copyFontsAndJavascriptsToBuild:
-    files: ['<%= config.temp %>/build/{fonts,javascripts}/**/*']
-    tasks: ['copy:fontsAndJavascriptsToBuild']
+  coffee:
+    files: ['<%= config.temp %>/build/**/*.coffee']
+    tasks: ['coffee']
+
+  copyFromTempToBuild:
+    files: [
+      '<%= config.temp %>/build/**/*'
+      '!<%= config.temp %>/build/**/*.{sass,scss,coffee}'
+    ]
+    tasks: ['copy:fromTempToBuild']
 
   assemble:
     files: ['<%= config.source %>/{data,helpers,layouts,pages,partials}/**/*']
