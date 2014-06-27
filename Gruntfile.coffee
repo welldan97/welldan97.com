@@ -19,6 +19,8 @@ module.exports = (grunt) ->
     'copy:stylesheets'
     'copy:vendor'
     'copy:bowerBootstrap'
+    'copy:bowerD3'
+
     'sass'
     'copy:fromTempToBuild'
     'assemble'

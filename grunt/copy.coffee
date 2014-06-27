@@ -35,10 +35,6 @@ module.exports =
     ]
 
   bowerD3:
-    files: [
-      expand: true
-      dot: true
-      cwd: 'bower_components/d3.js'
-      dest: '<%= config.temp %>/build/assets/javsacripts'
-      src:  '{,**/}*'
-    ]
+    files:
+      '<%= config.temp %>/build/assets/javascripts/d3.js':
+        'bower_components/d3/d3.js'
