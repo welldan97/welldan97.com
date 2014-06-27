@@ -1,11 +1,16 @@
 module.exports =
-  stylesheets:
-    files: [
+  assets:
+    files: [{
       expand: true
       cwd: '<%= config.source %>/stylesheets'
       src: '{,**/}*.sass'
       dest: '<%= config.temp %>/build/assets/stylesheets'
-    ]
+    }, {
+      expand: true
+      cwd: '<%= config.source %>/javascripts'
+      src: '{,**/}*.coffee'
+      dest: '<%= config.temp %>/build/assets/javascripts'
+    }]
 
   fromTempToBuild:
     files: [
@@ -13,7 +18,7 @@ module.exports =
       dot:  true
       cwd:  '<%= config.temp %>/build'
       dest: '<%= config.build %>'
-      src:  ['{,**/}*', '!{,**}*.{sass,scss}']
+      src:  ['{,**/}*', '!{,**}*.{sass,scss,coffee}']
     ]
 
   vendor:

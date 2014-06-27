@@ -16,13 +16,16 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'build:development', [
     'clean'
-    'copy:stylesheets'
+
+    'copy:assets'
     'copy:vendor'
     'copy:bowerBootstrap'
     'copy:bowerD3'
 
     'sass'
+    'coffee'
     'copy:fromTempToBuild'
+
     'assemble'
   ]
 
