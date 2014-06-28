@@ -3,18 +3,18 @@ handlebars = require('handlebars')
 grunt = require('grunt')
 _ = require('lodash')
 
-module.exports.bridgeMarkdown = (options) ->
-  content = grunt.file.read(pathToMdFile(options.page))
-  marked(compileHandlebars(content, fixOptions(options)))
+module.exports.bridgeMarkdown = (context) ->
+  content = grunt.file.read(pathToMdFile(context.page))
+  marked(compileHandlebars(content, fixContext(context)))
 
-fixOptions = (options) ->
-  newPage = _.merge {}, options.page,
-    src: pathToMdFile(options.page)
+fixContext = (context) ->
+  newPage = _.merge {}, context.page,
+    src: pathToMdFile(context.page)
 
-  newOptions = _.clone options
-  newOptions.page = newPage
-  newOptions.options = newOptions
-  newOptions
+  newContext = _.clone context
+  newContext.page = newPage
+  newContext.context = newContext
+  newContext
 
 pathToMdFile = (page) ->
   pathToFile = page.src
@@ -23,8 +23,8 @@ pathToMdFile = (page) ->
 
   "#{pathToFile}/markdown/#{page.basename}.md"
 
-compileHandlebars = (content, options) ->
-  _.forOwn options, (fn, key) ->
+compileHandlebars = (content, context) ->
+  _.forOwn context, (fn, key) ->
     if _.isFunction(fn)
       handlebars.registerHelper(key, fn)
-  handlebars.compile(content)(options)
+  handlebars.compile(content)(context)

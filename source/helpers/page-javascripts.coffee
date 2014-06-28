@@ -1,5 +1,5 @@
-module.exports.pageJavascripts = (options) ->
-  javascripts = options.pageAssetsCollection(options, 'javascripts')
+module.exports.pageJavascripts = (context) ->
+  javascripts = context.pageAssetsCollection(context, 'javascripts')
   javascripts
     .map (javascript) ->
       "<script src=\"/assets/javascripts/#{javascript}.js\"></script>"

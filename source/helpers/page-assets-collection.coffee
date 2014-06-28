@@ -1,7 +1,7 @@
-module.exports.pageAssetsCollection = (options, type) ->
-  page = options.page
+module.exports.pageAssetsCollection = (context, type) ->
+  page = context.page
   assets = page.data[type] || []
-  assets.concat(pageSpecificAssets(page, options.config.build))
+  assets.concat(pageSpecificAssets(page, context.config.build))
 
 
 pageSpecificAssets = (page, build) ->
