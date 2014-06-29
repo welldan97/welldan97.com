@@ -1,9 +1,9 @@
 module.exports.pageClass = (page, config) ->
-  prefix = page.dirname
+  dirname = page.dirname
     .replace(new RegExp("#{config.build}/?"), '')
     .replace('/', '-')
 
-  if prefix == ''
+  if dirname == ''
     page.basename
   else
-    "#{prefix}-#{page.basename}"
+    "#{page.basename} #{dirname}"
