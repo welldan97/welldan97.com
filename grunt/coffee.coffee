@@ -4,7 +4,7 @@ module.exports =
   main:
     files: [
       expand: true
-      cwd:    '<%= config.temp %>/build'
+      cwd:    '<%= config.build %>'
       src:    '{,**/}*.coffee'
       dest:   '<%= config.build %>'
       ext:    '.js'

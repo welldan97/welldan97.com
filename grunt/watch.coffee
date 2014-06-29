@@ -4,19 +4,12 @@ module.exports =
     tasks: ['copy:assets']
 
   sass:
-    files: ['<%= config.temp %>/build/**/*.{scss,sass}']
+    files: ['<%= config.build %>/**/*.{scss,sass}']
     tasks: ['sass']
 
   coffee:
-    files: ['<%= config.temp %>/build/**/*.coffee']
+    files: ['<%= config.build %>/**/*.coffee']
     tasks: ['coffee']
-
-  copyFromTempToBuild:
-    files: [
-      '<%= config.temp %>/build/**/*'
-      '!<%= config.temp %>/build/**/*.{sass,scss,coffee}'
-    ]
-    tasks: ['copy:fromTempToBuild']
 
   assemble:
     files: ['<%= config.source %>/{data,helpers,layouts,pages,partials}/**/*']

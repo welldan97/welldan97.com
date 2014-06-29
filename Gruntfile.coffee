@@ -24,7 +24,6 @@ module.exports = (grunt) ->
 
     'sass'
     'coffee'
-    'copy:fromTempToBuild'
 
     'assemble'
   ]

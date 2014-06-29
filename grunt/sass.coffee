@@ -5,7 +5,7 @@ module.exports =
   main:
     files: [
       expand: true
-      cwd:    '<%= config.temp %>/build'
+      cwd:    '<%= config.build %>'
       src:    '{,**/}*.{sass,scss}'
       dest:   '<%= config.build %>'
       ext:    '.css'
