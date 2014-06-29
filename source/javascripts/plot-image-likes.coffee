@@ -1,5 +1,7 @@
 main = ->
-  d3options = prepareD3()
+  SELECTOR = '.plot-image-likes'
+
+  D3OPTIONS = prepareD3(SELECTOR)
   getData (data) ->
     render(data, d3options)
 
@@ -21,10 +23,13 @@ prepareD3 = ->
   svg = d3
     .select("body")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", width)
+    .attr("height", height)
+
+    # .attr("width", width + margin.left + margin.right)
+    # .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+    # .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
   svg: svg, x: x, y: y
 
@@ -51,8 +56,7 @@ render = (data, d3options) ->
     .attr("r", 2)
     .attr "cx", (d) ->
       x d.createdTime
-    .attr "cy", (d) ->
-      y d.likes
+    .attr "cy", (d) -> y d.likes
 
 
   line = d3.svg.line().x((d, i) ->
