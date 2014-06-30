@@ -1,41 +1,32 @@
-main = ->
-  SELECTOR = '.plot-image-likes'
+SELECTOR = '.plot-image-likes'
+RADIUS = 3
 
-  D3OPTIONS = prepareD3(SELECTOR)
+RATIO = 1/2
+
+main = ->
+  d3options = prepareD3(SELECTOR)
   getData (data) ->
     render(data, d3options)
 
-prepareD3 = ->
-  margin =
-    top: 20
-    right: 20
-    bottom: 30
-    left: 40
+prepareD3 = (selector)->
+  width = $(selector).width()
+  height = RATIO * width
 
-  width = 960 - margin.left - margin.right
-  height = 500 - margin.top - margin.bottom
-  x = d3.scale.linear().range([0, width])
-  y = d3.scale.linear().range([height, 0])
-  color = d3.scale.category10()
-  xAxis = d3.svg.axis().scale(x).orient("bottom")
-  yAxis = d3.svg.axis().scale(y).orient("left")
+  x = d3.scale.linear().range([0, width - RADIUS*2])
+  y = d3.scale.linear().range([height - RADIUS*2, 0])
 
   svg = d3
-    .select("body")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-
-    # .attr("width", width + margin.left + margin.right)
-    # .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    # .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+    .select(selector)
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .append('g')
 
   svg: svg, x: x, y: y
 
 getData = (cb) ->
   data = []
-  d3.csv.parse csvSource, (row) ->
+  d3.csv.parse CSV_SOURCE, (row) ->
     row.likes = +row.likes
     row.createdTime = +row.createdTime
     row.loess = +row.loess
@@ -45,32 +36,34 @@ getData = (cb) ->
 
 render = (data, d3options) ->
   { svg: svg, x: x, y: y } = d3options
+
   x.domain(d3.extent(data, (d) -> d.createdTime)).nice()
   y.domain(d3.extent(data, (d) -> d.likes)).nice()
+
   svg
-    .selectAll(".dot")
-    .data(data)
+    .selectAll '.dot'
+    .data data
     .enter()
-    .append("circle")
-    .attr("class", "dot")
-    .attr("r", 2)
-    .attr "cx", (d) ->
-      x d.createdTime
-    .attr "cy", (d) -> y d.likes
+    .append 'circle'
+    .attr 'class', 'dot'
+    .attr 'r', RADIUS
+    .attr 'cx', (d) -> x d.createdTime
+    .attr 'cy', (d) -> y d.likes
 
+  line = d3
+    .svg
+    .line()
+    .x (d) -> x d.createdTime
+    .y (d) -> y d.loess
 
-  line = d3.svg.line().x((d, i) ->
-    x d.createdTime
-  ).y((d) ->
-    y d.loess
-  )
+  loessData = _.reject(data, score: 0)
+
   svg
-    .append("path")
-    .attr("d", line(_.reject(data, score: 0)))
-    .attr('fill','transparent')
-    .attr('stroke','black')
+    .append 'path'
+    .attr 'd', line(loessData)
+    .attr 'class', 'one'
 
-csvSource = """
+CSV_SOURCE = """
 likes,createdTime,loess,score
 8,1403147273,10.3,2
 8,1403069856,10.3,2
