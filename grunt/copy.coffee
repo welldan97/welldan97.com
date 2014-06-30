@@ -34,3 +34,8 @@ module.exports =
     files:
       '<%= config.build %>/assets/javascripts/d3.js':
         'bower_components/d3/d3.js'
+
+  bowerJQuery:
+    files:
+      '<%= config.build %>/assets/javascripts/jquery.js':
+        'bower_components/jquery/dist/jquery.js'

@@ -21,6 +21,7 @@ module.exports = (grunt) ->
     'copy:vendor'
     'copy:bowerBootstrap'
     'copy:bowerD3'
+    'copy:bowerJQuery'
 
     'sass'
     'coffee'
