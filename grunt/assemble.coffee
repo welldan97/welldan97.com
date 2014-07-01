@@ -17,5 +17,5 @@ module.exports =
       cwd: '<%= config.source %>/pages/'
       dest: '<%= config.build %>'
       expand: true
-      src: ['**/*.jade']
+      src: ['**/*.jade', '!blog/*/**/*.jade']
     ]
