@@ -53,10 +53,12 @@ render = (data, d3options) ->
   line = d3
     .svg
     .line()
+    .interpolate('basis')
     .x (d) -> x d.createdTime
     .y (d) -> y d.loess
 
-  loessData = _.reject(data, score: 0)
+  loessData = _.reject data, (d, i)->
+    return (d.score == 0) || (i % 3 > 0)
 
   svg
     .append 'path'
