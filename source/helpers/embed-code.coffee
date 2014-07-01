@@ -1,7 +1,7 @@
 grunt = require('grunt')
 highlight = require('highlight.js').highlight
 
-module.exports.embedCode = (path, context) ->
+module.exports.embedCode = (path) ->
   contents = grunt.file.read(pathToFile(path, context.page))
   highlightObject = highlight(language(path), contents)
   """

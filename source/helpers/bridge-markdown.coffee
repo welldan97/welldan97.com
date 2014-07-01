@@ -3,7 +3,7 @@ handlebars = require('handlebars')
 grunt = require('grunt')
 _ = require('lodash')
 
-module.exports.bridgeMarkdown = (context) ->
+module.exports.bridgeMarkdown = ->
   content = grunt.file.read(pathToMdFile(context.page))
   marked(compileHandlebars(content, fixContext(context)))
 

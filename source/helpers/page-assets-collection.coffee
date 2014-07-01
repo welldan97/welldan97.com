@@ -1,4 +1,4 @@
-module.exports.pageAssetsCollection = (context, type) ->
+module.exports.pageAssetsCollection = (type) ->
   page = context.page
   assets = page.data[type] || []
   assets.concat(pageSpecificAssets(page, context.config.build))

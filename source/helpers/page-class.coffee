@@ -1,6 +1,7 @@
-module.exports.pageClass = (page, config) ->
+module.exports.pageClass = ->
+  page = context.page
   dirname = page.dirname
-    .replace(new RegExp("#{config.build}/?"), '')
+    .replace(new RegExp("#{context.config.build}/?"), '')
     .replace('/', '-')
 
   if dirname == ''
