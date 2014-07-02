@@ -41,13 +41,13 @@ render = (data, d3options) ->
   y.domain(d3.extent(data, (d) -> d.likes)).nice()
 
   svg
-    .selectAll '.dot'
+    .selectAll '.image'
     .data data
     .enter()
     .append 'foreignObject'
     .attr 'width', '30'
     .attr 'height', '30'
-    .attr 'class', (d) -> "icon-#{d.createdTime}"
+    .attr 'class', (d) -> "image image-#{d.createdTime}"
     .attr 'x', (d) -> x d.createdTime
     .attr 'y', (d) -> y d.likes
     .attr 'x', (d) -> x d.createdTime

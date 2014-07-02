@@ -10,6 +10,11 @@ module.exports =
       cwd: '<%= config.source %>/javascripts'
       src: '{,**/}*.coffee'
       dest: '<%= config.build %>/assets/javascripts'
+    }, {
+      expand: true
+      cwd: '<%= config.source %>/images'
+      src: '{,**/}*.{jpg,png,gif}'
+      dest: '<%= config.build %>/assets/images'
     }]
 
   vendor:
