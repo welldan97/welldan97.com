@@ -8,7 +8,7 @@ module.exports.embedCSV = (path) ->
 convertToTable = (csv) ->
   csvElements = _.map _.filter(csv.split("\n"), _.isBlank), (row) ->
     row.split ','
-  head = "<tr><th>#{_.head(csvElements).join('</th><th>')}</th></tr>"
+  head = "<tr><td>#{_.head(csvElements).join('</td><td>')}</td></tr>"
 
   body = _(csvElements)
     .tail()
@@ -17,11 +17,9 @@ convertToTable = (csv) ->
     .value()
 
   """
-  <table class="table">
-    <thead>
-      #{head}
-    </thead>
+  <table class="table table-bordered table-hover">
     <tbody>
+      #{head}
       #{body.join('')}
     </tbody>
   </table>
