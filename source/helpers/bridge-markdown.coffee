@@ -5,16 +5,7 @@ _ = require('lodash')
 
 module.exports.bridgeMarkdown = ->
   content = grunt.file.read(pathToMdFile(context.page))
-  marked(compileHandlebars(content, fixContext(context)))
-
-fixContext = (context) ->
-  newPage = _.merge {}, context.page,
-    src: pathToMdFile(context.page)
-
-  newContext = _.clone context
-  newContext.page = newPage
-  newContext.context = newContext
-  newContext
+  compileHandlebars(unescape(marked(content)), context)
 
 pathToMdFile = (page) ->
   pathToFile = page.src
@@ -28,3 +19,8 @@ compileHandlebars = (content, context) ->
     if _.isFunction(fn)
       handlebars.registerHelper(key, fn)
   handlebars.compile(content)(context)
+
+unescape = (content)->
+  content
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
