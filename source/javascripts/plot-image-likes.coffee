@@ -1,5 +1,5 @@
 SELECTOR = '.plot-image-likes'
-RADIUS = 3
+IMAGE_SIZE = 30
 
 RATIO = 1/2
 
@@ -12,8 +12,8 @@ prepareD3 = (selector)->
   width = $(selector).width()
   height = RATIO * width
 
-  x = d3.scale.linear().range([0, width - RADIUS*2])
-  y = d3.scale.linear().range([height - RADIUS*2, 0])
+  x = d3.scale.linear().range([0, width - IMAGE_SIZE])
+  y = d3.scale.linear().range([height - IMAGE_SIZE, 0])
 
   svg = d3
     .select(selector)
@@ -45,13 +45,11 @@ render = (data, d3options) ->
     .data data
     .enter()
     .append 'foreignObject'
-    .attr 'width', '30'
-    .attr 'height', '30'
+    .attr 'width', IMAGE_SIZE
+    .attr 'height', IMAGE_SIZE
     .attr 'class', (d) -> "image image-#{d.createdTime}"
-    .attr 'x', (d) -> x d.createdTime
-    .attr 'y', (d) -> y d.likes
-    .attr 'x', (d) -> x d.createdTime
-    .attr 'y', (d) -> y d.likes
+    .attr 'x', (d) -> (x d.createdTime) - IMAGE_SIZE/2
+    .attr 'y', (d) -> (y d.likes) - IMAGE_SIZE/2
 
   line = d3
     .svg
