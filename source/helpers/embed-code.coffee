@@ -1,5 +1,6 @@
 grunt = require('grunt')
 highlight = require('highlight.js').highlight
+_ = require('lodash')
 
 module.exports.embedCode = (path) ->
   contents = grunt.file.read(pathToFile(path, context.page))
@@ -15,10 +16,20 @@ pathToFile = (path, page) ->
 
   "#{dir}/#{page.basename}/#{path}"
 
-languageMap =
+extensionLanguageMap =
   hs: 'haskell'
   json: 'json'
+  r: 'r'
+  coffee: 'coffeescript'
+  # HACK:
+  jade: 'haml'
+
+filenameLanguageMap =
+  Makefile: 'makefile'
 
 language = (path) ->
-  extension = path.replace(/.*\./,'')
-  languageMap[extension]
+  if _.has(filenameLanguageMap, path)
+    filenameLanguageMap[path]
+  else
+    extension = path.replace(/.*\./,'')
+    extensionLanguageMap[extension]
