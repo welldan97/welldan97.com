@@ -9,11 +9,17 @@ main = ->
     render(data, d3options)
 
 prepareD3 = (selector)->
-  width = $(selector).width()
-  height = RATIO * width
+  margin =
+    top: IMAGE_SIZE/2
+    right: IMAGE_SIZE/2
+    bottom: IMAGE_SIZE/2
+    left: IMAGE_SIZE/2
+  rawWidth = +$(SELECTOR).width()
+  width = rawWidth
+  height = RATIO * rawWidth
 
-  x = d3.scale.linear().range([0, width - IMAGE_SIZE])
-  y = d3.scale.linear().range([height - IMAGE_SIZE, 0])
+  x = d3.scale.linear().range([0, width - margin.left - margin.right])
+  y = d3.scale.linear().range([height - margin.top - margin.bottom, 0])
 
   svg = d3
     .select(selector)
@@ -21,6 +27,7 @@ prepareD3 = (selector)->
     .attr('width', width)
     .attr('height', height)
     .append('g')
+    .attr('transform', "translate(#{margin.left},#{margin.top})")
 
   svg: svg, x: x, y: y
 
@@ -37,26 +44,31 @@ getData = (cb) ->
 render = (data, d3options) ->
   { svg: svg, x: x, y: y } = d3options
 
-  x.domain(d3.extent(data, (d) -> d.createdTime)).nice()
-  y.domain(d3.extent(data, (d) -> d.likes)).nice()
+  x.domain(d3.extent(data, (d) -> d.createdTime))#.nice()
+  y.domain(d3.extent(data, (d) -> d.likes))#.nice()
 
   svg
-    .selectAll '.image'
-    .data data
+    .selectAll('.image')
+    .data(data)
     .enter()
-    .append 'foreignObject'
-    .attr 'width', IMAGE_SIZE
-    .attr 'height', IMAGE_SIZE
-    .attr 'class', (d) -> "image image-#{d.createdTime}"
-    .attr 'x', (d) -> (x d.createdTime) - IMAGE_SIZE/2
-    .attr 'y', (d) -> (y d.likes) - IMAGE_SIZE/2
+    .append('foreignObject')
+    .attr('width', IMAGE_SIZE)
+    .attr('height', IMAGE_SIZE)
+    .attr 'class', (d) ->
+      "image image-#{d.createdTime}"
+    .attr 'x', (d) ->
+      (x d.createdTime) - IMAGE_SIZE/2
+    .attr 'y', (d) ->
+      (y d.likes) - IMAGE_SIZE/2
 
   line = d3
     .svg
     .line()
     .interpolate('basis')
-    .x (d) -> x d.createdTime
-    .y (d) -> y d.loess
+    .x (d) ->
+      x d.createdTime
+    .y (d) ->
+      y d.loess
 
   loessData = _.reject data, (d, i)->
     return (d.score == 0) || (i % 3 > 0)
@@ -65,6 +77,7 @@ render = (data, d3options) ->
     .append 'path'
     .attr 'd', line(loessData)
     .attr 'class', 'one'
+
 
 CSV_SOURCE = """
 likes,createdTime,loess,score
