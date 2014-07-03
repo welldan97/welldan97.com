@@ -1,3 +1,4 @@
+# HACK: refactor and move styles outside
 SELECTOR = '.plot-image-likes'
 IMAGE_SIZE = 30
 
@@ -9,17 +10,27 @@ main = ->
     render(data, d3options)
 
 prepareD3 = (selector)->
+  axisSize =
+    left: 30
+    bottom: 15
+    right: 5
+    top: 5
+
   margin =
     top: IMAGE_SIZE/2
     right: IMAGE_SIZE/2
-    bottom: IMAGE_SIZE/2
-    left: IMAGE_SIZE/2
+    bottom: IMAGE_SIZE/2 + axisSize.bottom + axisSize.top
+    left: IMAGE_SIZE/2 + axisSize.left + axisSize.right
+
   rawWidth = +$(SELECTOR).width()
   width = rawWidth
   height = RATIO * rawWidth
 
-  x = d3.scale.linear().range([0, width - margin.left - margin.right])
-  y = d3.scale.linear().range([height - margin.top - margin.bottom, 0])
+  innerWidth = width - margin.left - margin.right
+  innerHeight = height - margin.top - margin.bottom
+
+  x = d3.scale.linear().range([0, innerWidth])
+  y = d3.scale.linear().range([innerHeight, 0])
 
   svg = d3
     .select(selector)
@@ -28,6 +39,52 @@ prepareD3 = (selector)->
     .attr('height', height)
     .append('g')
     .attr('transform', "translate(#{margin.left},#{margin.top})")
+
+  svg
+    .append('defs')
+    .append('marker')
+    .attr('id','marker-arrow')
+    .attr('orient','auto')
+    .attr('markerWidth', 11.3)
+    .attr('markerHeight', 4)
+    .attr('refX', 2)
+    .attr('refY', 2)
+    .append('path')
+    .attr('d', 'M0,0 L2,2 L0,4 L11.3,2 Z')
+
+  svg
+    .append('line')
+    .attr('x1', -margin.left + axisSize.left)
+    .attr('y1',innerHeight + margin.bottom - axisSize.bottom)
+    .attr('x2',innerWidth)
+    .attr('y2',innerHeight + margin.bottom - axisSize.bottom)
+    .attr('stroke-width', 2)
+    .attr('stroke', 'black')
+    .attr('marker-end','url(#marker-arrow)')
+
+  svg
+    .append('line')
+    .attr('x1', -margin.left + axisSize.left)
+    .attr('y1',innerHeight + margin.bottom - axisSize.bottom)
+    .attr('x2', -margin.left + axisSize.left)
+    .attr('y2',0)
+    .attr('stroke-width', 2)
+    .attr('stroke', 'black')
+    .attr('marker-end','url(#marker-arrow)')
+
+  svg
+    .append('text')
+    .attr('x', innerWidth)
+    .attr('y', innerHeight + margin.bottom - axisSize.bottom)
+    .attr('text-anchor','end')
+    .text('time')
+
+  svg
+    .append('text')
+    .attr('x', -margin.left + axisSize.left)
+    .attr('y', 0)
+    .attr('text-anchor','end')
+    .text('likes')
 
   svg: svg, x: x, y: y
 
@@ -69,15 +126,13 @@ render = (data, d3options) ->
       x d.createdTime
     .y (d) ->
       y d.loess
-
   loessData = _.reject data, (d, i)->
     return (d.score == 0) || (i % 3 > 0)
 
   svg
-    .append 'path'
-    .attr 'd', line(loessData)
-    .attr 'class', 'one'
-
+    .append('path')
+    .attr('d', line(loessData))
+    .attr('class', 'one')
 
 CSV_SOURCE = """
 likes,createdTime,loess,score
