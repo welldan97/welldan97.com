@@ -3,7 +3,7 @@ module.exports =
     assets: '<%= config.build %>/assets'
 
     data: '<%= config.source %>/data/**/.{json,yml}'
-    helpers: '<%= config.source %>/helpers/*.coffee'
+    helpers: '<%= config.source %>/helpers/**/*.coffee'
     layout: 'default.jade'
     layoutdir: '<%= config.source %>/layouts/',
     partials: '<%= config.source %>/partials/**/*.jade'
