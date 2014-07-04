@@ -44,3 +44,8 @@ module.exports =
     files:
       '<%= config.build %>/assets/javascripts/jquery.js':
         'bower_components/jquery/dist/jquery.js'
+
+  bowerLodash:
+    files:
+      '<%= config.build %>/assets/javascripts/lodash.js':
+        'bower_components/lodash/dist/lodash.js'
