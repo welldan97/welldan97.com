@@ -1,6 +1,6 @@
 module.exports =
   copyAssets:
-    files: ['<%= config.source %>/{stylesheets,javascripts}/**/*']
+    files: ['<%= config.source %>/{stylesheets,javascripts,images}/**/*']
     tasks: ['copy:assets']
 
   sass:
