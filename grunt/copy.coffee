@@ -26,6 +26,7 @@ module.exports =
       src:  '{,**/}*'
     ]
 
+
   bowerBootstrap:
     files: [
       expand: true

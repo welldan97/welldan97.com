@@ -5,6 +5,13 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks 'assemble'
 
+  grunt.registerTask 'copyBowerFiles', [
+    'copy:bowerBootstrap'
+    'copy:bowerD3'
+    'copy:bowerJQuery'
+    'copy:bowerLodash'
+  ]
+
   grunt.registerTask 'build:production', [
     'coffeelint'
     'build:development'
@@ -19,11 +26,7 @@ module.exports = (grunt) ->
 
     'copy:assets'
     'copy:vendor'
-
-    'copy:bowerBootstrap'
-    'copy:bowerD3'
-    'copy:bowerJQuery'
-    'copy:bowerLodash'
+    'copyBowerFiles'
 
     'sass'
     'coffee'
