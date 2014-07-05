@@ -1,0 +1,1 @@
+$('.cover').height(window.innerHeight)
