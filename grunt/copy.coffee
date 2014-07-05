@@ -3,12 +3,12 @@ module.exports =
     files: [{
       expand: true
       cwd: '<%= config.source %>/stylesheets'
-      src: '{,**/}*.sass'
+      src: '{,**/}*.{sass,scss,css}'
       dest: '<%= config.build %>/assets/stylesheets'
     }, {
       expand: true
       cwd: '<%= config.source %>/javascripts'
-      src: '{,**/}*.coffee'
+      src: '{,**/}*.{coffee,js}'
       dest: '<%= config.build %>/assets/javascripts'
     }, {
       expand: true

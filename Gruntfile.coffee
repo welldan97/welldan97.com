@@ -24,9 +24,9 @@ module.exports = (grunt) ->
   grunt.registerTask 'build:development', [
     'clean'
 
-    'copy:assets'
-    'copy:vendor'
     'copyBowerFiles'
+    'copy:vendor'
+    'copy:assets'
 
     'sass'
     'coffee'
