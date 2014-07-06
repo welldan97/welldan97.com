@@ -17,7 +17,7 @@ convertToTable = (csv) ->
     .value()
 
   """
-  <table class="table table-bordered table-hover">
+  <table class="table no-outside-border table-bordered table-hover">
     <tbody>
       #{head}
       #{body.join('')}
