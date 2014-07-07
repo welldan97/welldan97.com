@@ -1,8 +1,10 @@
 _ = require('lodash')
 
 module.exports.embedPlaceholder = (classes...) ->
-  classAttr = if _.any(classes)
-    " class=\"#{classes.join(' ')}\""
+  cleanClasses = _.reject(classes, _.isObject)
+
+  classAttr = if _.any(cleanClasses)
+    " class=\"#{cleanClasses.join(' ')}\""
   else
     ''
 
