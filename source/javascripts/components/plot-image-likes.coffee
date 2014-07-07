@@ -3,7 +3,7 @@ IMAGE_SIZE = 30
 
 AXIS_SIZE =
   left: 60
-  bottom: 50
+  bottom: 30
   right: 5
   top: 5
 
