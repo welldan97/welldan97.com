@@ -1,7 +1,30 @@
 .plot
-  border: 1px solid red
   padding: 20px
+  background: #ad0111
+  border: 1px solid red
+
+  .marker-gost
+    stroke: transparent
+    fill: white
+
+  .axis
+    stroke: white
+    stroke-width: 3px
+    stroke-linecap: round
+    marker-end: url(#marker-gost)
+
+  .axis-text
+    fill: white
+    font-size: ceil((20 * 1.25))
+
+    &.left
+      text-anchor: end
+
+    &.bottom
+      text-anchor: end
+
 
   .one
     stroke: black
+    stroke-width: 5px
     fill: transparent
