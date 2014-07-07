@@ -1,7 +1,7 @@
 module.exports =
   copyAssets:
     files: ['<%= config.source %>/{stylesheets,javascripts,images}/**/*']
-    tasks: ['copy:assets']
+    tasks: ['newer:copy:assets']
 
   sass:
     files: ['<%= config.build %>/**/*.{scss,sass}']
@@ -9,7 +9,7 @@ module.exports =
 
   coffee:
     files: ['<%= config.build %>/**/*.coffee']
-    tasks: ['coffee']
+    tasks: ['newer:coffee']
 
   assemble:
     files: ['<%= config.source %>/{data,helpers,layouts,pages,partials}/**/*']
@@ -18,4 +18,4 @@ module.exports =
   livereload:
     options:
       livereload: '<%= connect.options.livereload %>'
-    files: '<%= config.build %>/**/*'
+    files: '<%= config.build %>/**/*.{html,js,css,png,jpg,gif}'
