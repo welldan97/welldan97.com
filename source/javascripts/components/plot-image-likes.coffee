@@ -13,8 +13,7 @@ AXIS_LABEL_TRANSLATE =
 
 main = ->
   d3options = prepareD3(SELECTOR)
-  # getData (data) ->
-    # render(data, d3options)
+  render(w97.plot.imageLikesData, d3options)
 
 prepareD3 = (selector)->
   margin =
@@ -28,11 +27,11 @@ prepareD3 = (selector)->
   x = d3.scale.linear().range([0, svgObject.width])
   y = d3.scale.linear().range([svgObject.height, 0])
 
-  drawAxises svgObject, 'time', 'likes',
+  drawAxises svgObject, 'Likes', 'Time',
     margin: margin
     axisSize: AXIS_SIZE
 
-  svg: svg, x: x, y: y
+  svg: svgObject.svg, x: x, y: y
 
 drawAxises = (svgObject, left, bottom, options) ->
   { svg: svg, width: width, height: height } = svgObject
@@ -102,8 +101,9 @@ render = (data, d3options) ->
       x d.createdTime
     .y (d) ->
       y d.loess
+
   loessData = _.reject data, (d, i)->
-    return (d.score == 0) || (i % 3 > 0)
+    return (d.score == 0) || (i % 7 > 0)
 
   svg
     .append('path')
