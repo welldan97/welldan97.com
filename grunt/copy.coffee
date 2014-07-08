@@ -41,6 +41,22 @@ module.exports =
       '<%= config.build %>/assets/javascripts/d3.js':
         'bower_components/d3/d3.js'
 
+  bowerFontAwesome:
+    files: [{
+      expand: true
+      dot: true
+      cwd: 'bower_components/font-awesome/fonts'
+      dest: '<%= config.build %>/assets/fonts'
+      src:  '{,**/}*'
+    }, {
+      expand: true
+      dot: true
+      cwd: 'bower_components/font-awesome/css'
+      dest: '<%= config.build %>/assets/stylesheets'
+      src:  'font-awesome.css'
+    }]
+
+
   bowerJQuery:
     files:
       '<%= config.build %>/assets/javascripts/jquery.js':

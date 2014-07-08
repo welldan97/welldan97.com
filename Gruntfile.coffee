@@ -8,6 +8,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'copyBowerFiles', [
     'copy:bowerBootstrap'
     'copy:bowerD3'
+    'copy:bowerFontAwesome'
     'copy:bowerJQuery'
     'copy:bowerLodash'
   ]
