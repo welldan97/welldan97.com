@@ -13,6 +13,7 @@ stylesheets:
   - components/figure
   - components/table
   - components/hljs
+  - components/footer
 javascripts:
   - d3
   - lodash
@@ -26,3 +27,7 @@ javascripts:
 .row
    .col-md-offset-2.col-md-8
     {{> body }}
+
+.footer
+  a(href=shareOnTwitter('TODO:url', title))
+    != icon('twitter')
