@@ -92,6 +92,11 @@ render = (data, d3options) ->
       (x d.createdTime) - IMAGE_SIZE/2
     .attr 'y', (d) ->
       (y d.likes) - IMAGE_SIZE/2
+    .append('xhtml:body')
+    .append('a')
+    .attr('target', '_blank')
+    .attr 'href', (d) ->
+      d.url
 
   line = d3
     .svg
