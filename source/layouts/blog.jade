@@ -14,6 +14,7 @@ stylesheets:
   - components/table
   - components/hljs
   - components/footer
+  - components/home
 javascripts:
   - d3
   - lodash
@@ -23,6 +24,10 @@ javascripts:
   - components/plot
 ---
 != partial('cover')
+
+.home
+  a(href="/blog/")
+    != icon('chevron-left')
 
 .row
    .col-md-offset-2.col-md-8
