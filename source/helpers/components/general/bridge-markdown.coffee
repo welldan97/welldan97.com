@@ -5,14 +5,30 @@ _ = require('lodash')
 
 module.exports.bridgeMarkdown = ->
   content = grunt.file.read(pathToMdFile(context.page))
-  compileHandlebars(unescape(marked(content)), context)
+
+  withFakeContext (fakeContext) ->
+    compileHandlebars(unescape(marked(content)), fakeContext)
 
 pathToMdFile = (page) ->
   pathToFile = page.src
     .replace(page.basename, '')
     .replace(/\.[^.]+/, '')
 
-  "#{pathToFile}/markdown/#{page.basename}.md"
+  "#{pathToFile}markdown/#{page.basename}.md"
+
+withFakeContext = (cb)->
+  originalContext = _.clone(context)
+  newContext =
+    page:
+      src: pathToMdFile(context.page)
+
+  _.merge context, newContext
+
+  result = cb(context)
+
+  global.context = originalContext
+
+  result
 
 compileHandlebars = (content, context) ->
   _.forOwn context, (fn, key) ->
