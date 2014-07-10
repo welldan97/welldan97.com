@@ -3,7 +3,7 @@ window.w97 = {} unless window.w97?
 _.merge window.w97,
   plot:
     options:
-      ratio: 5/14
+      ratio: 5 / 14
 
     appendTo: (selector, options) ->
       margin = options.margin

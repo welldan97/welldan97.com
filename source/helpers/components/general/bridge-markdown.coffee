@@ -16,7 +16,7 @@ pathToMdFile = (page) ->
 
   "#{pathToFile}markdown/#{page.basename}.md"
 
-withFakeContext = (cb)->
+withFakeContext = (cb) ->
   originalContext = _.clone(context)
   newContext =
     page:
@@ -36,7 +36,7 @@ compileHandlebars = (content, context) ->
       handlebars.registerHelper(key, fn)
   handlebars.compile(content)(context)
 
-unescape = (content)->
+unescape = (content) ->
   content
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")

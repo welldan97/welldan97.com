@@ -15,12 +15,12 @@ main = ->
   d3options = prepareD3(SELECTOR)
   render(w97.plot.imageLikesData, d3options)
 
-prepareD3 = (selector)->
+prepareD3 = (selector) ->
   margin =
-    top: IMAGE_SIZE/2
-    right: IMAGE_SIZE/2
-    bottom: IMAGE_SIZE/2 + AXIS_SIZE.bottom + AXIS_SIZE.top
-    left: IMAGE_SIZE/2 + AXIS_SIZE.left + AXIS_SIZE.right
+    top: IMAGE_SIZE / 2
+    right: IMAGE_SIZE / 2
+    bottom: IMAGE_SIZE / 2 + AXIS_SIZE.bottom + AXIS_SIZE.top
+    left: IMAGE_SIZE / 2 + AXIS_SIZE.left + AXIS_SIZE.right
 
   svgObject = w97.plot.appendTo(selector, margin: margin)
 
@@ -89,9 +89,9 @@ render = (data, d3options) ->
     .attr 'class', (d) ->
       "image image-#{d.createdTime}"
     .attr 'x', (d) ->
-      (x d.createdTime) - IMAGE_SIZE/2
+      (x d.createdTime) - IMAGE_SIZE / 2
     .attr 'y', (d) ->
-      (y d.likes) - IMAGE_SIZE/2
+      (y d.likes) - IMAGE_SIZE / 2
     .append('xhtml:body')
     .append('a')
     .attr('target', '_blank')
@@ -107,7 +107,7 @@ render = (data, d3options) ->
     .y (d) ->
       y d.loess
 
-  loessData = _.reject data, (d, i)->
+  loessData = _.reject data, (d, i) ->
     return (d.score == 0) || (i % 7 > 0)
 
   svg

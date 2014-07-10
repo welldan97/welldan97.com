@@ -1,7 +1,7 @@
 module.exports.tabPanes = (tabs..., options) ->
   context.activeTabPanes = tabs: tabs, tabCounter: 0
   tabsHTML = tabs
-    .map (tab, i)->
+    .map (tab, i) ->
       active = if (i == 0)
         ' class="active"'
       else

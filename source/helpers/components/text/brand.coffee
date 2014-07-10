@@ -12,4 +12,4 @@ module.exports.brand = module.exports.b = (brand) ->
     r: 'R'
 
   # TODO: smarter fetch
-  brands[brand] || throw "Brand not found brand #{brand}"
+  brands[brand] || throw new Error("Brand not found brand #{brand}")
