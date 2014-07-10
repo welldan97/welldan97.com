@@ -9,10 +9,11 @@ date: 2014-07-09
   a(href="/blog/")
     != icon('chevron-left')
 
-.row
-   .col-md-offset-2.col-md-8
-    {{> body }}
-
-.footer
-  a(href=shareOnTwitter('TODO:url', title))
-    != icon('twitter')
+.container-fluid.content
+  .row
+     .col-md-offset-2.col-md-8
+      {{> body }}
+  
+  .footer
+    a(href=shareOnTwitter('TODO:url', title))
+      != icon('twitter')
