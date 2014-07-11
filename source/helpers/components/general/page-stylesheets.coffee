@@ -6,17 +6,19 @@ module.exports.pageStylesheets = ->
   stylesheetsHTML = stylesheets
     .map (stylesheet) ->
       """
-      <link rel="stylesheet" href="/assets/stylesheets/#{stylesheet}.css">
-      </link>
+      <link rel="stylesheet" href="/assets/stylesheets/#{stylesheet}.css"/>
       """
     .join('')
 
   pageSpecificStylesheetsHTML = pageSpecificStylesheets
     .map (stylesheet) ->
       """
-      <link rel="stylesheet" href="/assets/stylesheets/#{stylesheet}.css">
-      </link>
+      <link rel="stylesheet" href="/assets/stylesheets/#{stylesheet}.css"/>
       """
     .join('')
-
-  "#{stylesheetsHTML}<!-- PAGE SPECIFIC -->#{pageSpecificStylesheetsHTML}"
+  """
+  <!-- !build:css test.css -->
+  #{stylesheetsHTML}
+  #{pageSpecificStylesheetsHTML}
+  <!-- !endbuild -->
+  """

@@ -5,11 +5,11 @@ module.exports.pageJavascripts = ->
   javascriptsHTML = javascripts
     .map (javascript) ->
       "<script src=\"/assets/javascripts/#{javascript}.js\"></script>"
-    .join('')
+    .join('\n')
 
   pageSpecificJavascriptsHTML = pageSpecificJavascripts
     .map (javascript) ->
       "<script src=\"/assets/javascripts/#{javascript}.js\"></script>"
-    .join('')
+    .join('\n')
 
-  "#{javascriptsHTML}<!-- PAGE SPECIFIC -->#{pageSpecificJavascriptsHTML}"
+  "#{javascriptsHTML}\n<!-- PAGE SPECIFIC -->#{pageSpecificJavascriptsHTML}"

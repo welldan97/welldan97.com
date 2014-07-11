@@ -14,12 +14,13 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'build:production', [
-    'coffeelint'
+    # 'coffeelint'
     'build:development'
-    'autoprefixer'
-    'rev'
+    # 'autoprefixer'
+    # 'useminPrepare'
+    'filerev'
     'usemin'
-    'htmlmin'
+    # 'htmlmin'
   ]
 
   grunt.registerTask 'build:development', [
