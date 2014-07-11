@@ -1,4 +1,4 @@
-module.exports.pageStylesheets = ->
+module.exports.pageStylesheets = (concatName) ->
 
   stylesheets = context.stylesheets || []
   pageSpecificStylesheets = context.pageSpecificStylesheets || []
@@ -8,17 +8,19 @@ module.exports.pageStylesheets = ->
       """
       <link rel="stylesheet" href="/assets/stylesheets/#{stylesheet}.css"/>
       """
-    .join('')
+    .join('\n')
 
   pageSpecificStylesheetsHTML = pageSpecificStylesheets
     .map (stylesheet) ->
       """
       <link rel="stylesheet" href="/assets/stylesheets/#{stylesheet}.css"/>
       """
-    .join('')
+    .join('\n')
+
   """
-  <!-- !build:css test.css -->
-  #{stylesheetsHTML}
+
+  <!-- build:css /assets/stylesheets/#{concatName}.css -->
+    #{stylesheetsHTML}
+  <!-- endbuild -->
   #{pageSpecificStylesheetsHTML}
-  <!-- !endbuild -->
   """

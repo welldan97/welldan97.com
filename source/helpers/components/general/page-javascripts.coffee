@@ -1,4 +1,4 @@
-module.exports.pageJavascripts = ->
+module.exports.pageJavascripts = (concatName) ->
   javascripts = context.javascripts || []
   pageSpecificJavascripts = context.pageSpecificJavascripts || []
 
@@ -12,4 +12,10 @@ module.exports.pageJavascripts = ->
       "<script src=\"/assets/javascripts/#{javascript}.js\"></script>"
     .join('\n')
 
-  "#{javascriptsHTML}\n<!-- PAGE SPECIFIC -->#{pageSpecificJavascriptsHTML}"
+  """
+
+  <!-- build:js /assets/javascripts/#{concatName}.js -->
+    #{javascriptsHTML}
+  <!-- endbuild -->
+  #{pageSpecificJavascriptsHTML}
+  """
