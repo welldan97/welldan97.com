@@ -17,5 +17,12 @@ module.exports.pageJavascripts = (concatName) ->
   <!-- build:js /assets/javascripts/#{concatName}.js -->
     #{javascriptsHTML}
   <!-- endbuild -->
-  #{pageSpecificJavascriptsHTML}
+
+  <!-- build:js #{pageSpecificPath()} -->
+    #{pageSpecificJavascriptsHTML}
+  <!-- endbuild -->
   """
+
+pageSpecificPath = ->
+  filename = "#{context.page.dirname}/#{context.page.basename}"
+  "/assets/stylesheets/pages/#{filename}.js"

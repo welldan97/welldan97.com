@@ -16,11 +16,16 @@ module.exports.pageStylesheets = (concatName) ->
       <link rel="stylesheet" href="/assets/stylesheets/#{stylesheet}.css"/>
       """
     .join('\n')
-
   """
-
   <!-- build:css /assets/stylesheets/#{concatName}.css -->
     #{stylesheetsHTML}
   <!-- endbuild -->
-  #{pageSpecificStylesheetsHTML}
+
+  <!-- build:css #{pageSpecificPath()} -->
+    #{pageSpecificStylesheetsHTML}
+  <!-- endbuild -->
   """
+
+pageSpecificPath = ->
+  filename = "#{context.page.dirname}/#{context.page.basename}"
+  "/assets/stylesheets/pages/#{filename}.css"
