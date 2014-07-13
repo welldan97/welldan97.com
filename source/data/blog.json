@@ -1,0 +1,28 @@
+{
+  "javascripts": [
+    "d3",
+    "lodash",
+    "jquery",
+    "bootstrap/tab",
+    "components/cover",
+    "components/plot"
+  ],
+
+  "stylesheets": [
+    "bootstrap",
+    "font-awesome",
+    "sunburst",
+    "base/typography",
+    "base/image",
+    "base/bootstrap_adjustments",
+    "components/blog",
+    "components/cover",
+    "components/figure",
+    "components/footer",
+    "components/hljs",
+    "components/home",
+    "components/plot",
+    "components/table",
+    "components/small-font"
+  ]
+}
