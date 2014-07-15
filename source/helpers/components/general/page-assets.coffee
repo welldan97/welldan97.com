@@ -5,12 +5,11 @@ _.mixin(_.str.exports())
 
 
 module.exports.pageAssets = (concatName, type, element) ->
-  assets = _(context.pageDir())
-    .map (dir) ->
+  assetsKey = _(['main'].concat(context.pageDir()))
+    .findLast (dir) ->
       context[dir]?[type]
-    .flatten()
-    .select()
-    .value()
+
+  assets = context[assetsKey][type]
 
   pageSpecificAssets = context["pageSpecific#{_.capitalize(type)}"] || []
   assetsHTML = assets.map(element).join('\n')
