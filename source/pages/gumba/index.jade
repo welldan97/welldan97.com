@@ -1,32 +1,42 @@
 ---
 title: Gumba
+pageSpecificJavascripts:
+  - jquery
+  - bootstrap/tab
+pageSpecificStylesheets:
+  - bootstrap
+  - base/typography
+  - base/bootstrap_adjustments
+  - gumba
 ---
 
 .container-fluid
-  .row-fluid
-    .span2
-    .span8
+  .row
+    .col-md-10.col-md-offset-1
       h1 Gumba
 
       p
-        | Gumba is the tool which gives you ability to use coffeescript and
-        a(href="https://github.com/epeli/underscore.string")
-          | underscore.string
-        |  goodness right inside your command line. Think of it as of modern variation of&nbsp;
+        | Gumba is the tool which gives you ability to use CoffeeScript and
+        = ' '
+        a(href="https://github.com/epeli/underscore.string")  underscore.string
+        = ' '
+        | goodness right inside your command line. Think of it as of modern variation of
+        = ' '
         code awk
-        |  or&nbsp;
+        = ' '
+        | or
+        = ' '
         code sed
-        | . So if you like coffeescript and you don't like command line magic, try Gumba!
+        | . So if you like CoffeeScript and you don't like command line magic, try Gumba!
 
-      p
-        'Take a look at these examples:
+      p Take a look at these examples:
       .well
-        ul.nav.nav-pills
+        ul.nav.nav-tabs(role="tablist")
           li.active
-            a(data-target="#example1-with-gumba" data-toggle="pill")
+            a(href="#example1-with-gumba" data-toggle="tab" role="tab")
               | Gumba
           li
-            a(data-target="#example1-without-gumba" data-toggle="pill")
+            a(href="#example1-without-gumba" data-toggle="tab" role="tab")
               | Without Gumba
 
         .tab-content
@@ -46,12 +56,12 @@ title: Gumba
 
 
       .well
-        ul.nav.nav-pills
+        ul.nav.nav-tabs(role="tablist")
           li.active
-            a(data-target="#example2-with-gumba" data-toggle="pill")
+            a(href="#example2-with-gumba" data-toggle="tab" role="tab")
               | Gumba
           li
-            a(data-target="#example2-without-gumba" data-toggle="pill")
+            a(href="#example2-without-gumba" data-toggle="tab" role="tab")
               | Without Gumba
 
         .tab-content
@@ -71,12 +81,12 @@ title: Gumba
 
 
       .well
-        ul.nav.nav-pills
+        ul.nav.nav-tabs(role="tablist")
           li.active
-            a(data-target="#example3-with-gumba" data-toggle="pill")
+            a(href="#example3-with-gumba" data-toggle="tab" role="tab")
               | Gumba
           li
-            a(data-target="#example3-without-gumba" data-toggle="pill")
+            a(href="#example3-without-gumba" data-toggle="tab" role="tab")
               | Without Gumba
         .tab-content
           .tab-pane.active#example3-with-gumba
