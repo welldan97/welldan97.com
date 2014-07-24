@@ -5,9 +5,12 @@ pageSpecificJavascripts:
   - bootstrap/tab
 pageSpecificStylesheets:
   - bootstrap
+  - font-awesome
   - base/typography
   - base/bootstrap_adjustments
   - gumba
+  - components/hljs
+  - sunburst
 ---
 
 .container-fluid
@@ -41,18 +44,15 @@ pageSpecificStylesheets:
 
         .tab-content
           .tab-pane.active#example1-with-gumba
-            pre.command-line
-              i.icon-chevron-right
-              |  echo ' test ' |
-              span.highlight  gumba 'trim()'
-              i.icon-chevron-right
-              |  test
+            pre.hljs.bash
+              | $ echo ' test ' |
+              span.hljs-title  gumba 'trim()'
+              = '\n'
+              | → test
           .tab-pane#example1-without-gumba
-            pre.command-line.scary
-              i.icon-chevron-right
-              |  echo ' test ' | sed -e 's/^ *//g' -e 's/ *$//g''
-              i.icon-chevron-right
-              |  test
+            pre.hljs.bash.old
+              | $ echo ' test ' | sed -e 's/^ *//g' -e 's/ *$//g''
+              | → test
 
 
       .well
@@ -66,18 +66,15 @@ pageSpecificStylesheets:
 
         .tab-content
           .tab-pane.active#example2-with-gumba
-            pre.command-line
-              i.icon-chevron-right
-              |  echo '1234567' |
-              span.highlight  gumba 'toNumber().numberFormat()'
-              i.icon-chevron-right
-              |  1,234,567
+            pre.hljs.bash
+              | $ echo '1234567' |
+              span.hljs-title  gumba 'toNumber().numberFormat()'
+              = '\n'
+              | → 1,234,567
           .tab-pane#example2-without-gumba
-            pre.command-line.scary
-              i.icon-chevron-right
-              |  echo '1234567' | sed -e :a -e 's/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'
-              i.icon-chevron-right
-              |  1,234,567
+            pre.hljs.bash.old
+              | $ echo '1234567' | sed -e :a -e 's/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'
+              | → 1,234,567
 
 
       .well
@@ -90,33 +87,25 @@ pageSpecificStylesheets:
               | Without Gumba
         .tab-content
           .tab-pane.active#example3-with-gumba
-            pre.command-line
-              i.icon-chevron-right
-              |  echo 'bulbasaur chermander pikachu' |
-              span.highlight  gumba 'titleize().words().toSentence()'
-              i.icon-chevron-right
-              |  Bulbasaur, Chermander and Pikachu
+            pre.hljs.bash
+              | $ echo 'bulbasaur chermander pikachu' |
+              span.hljs-title  gumba 'titleize().words().toSentence()'
+              = '\n'
+              | → Bulbasaur, Chermander and Pikachu
           .tab-pane#example3-without-gumba
-            pre.command-line.scary
-              i.icon-chevron-right
-              |  echo 'bulbasaur chermander pikachu' | ?????
-              i.icon-chevron-right
-              |  PROFIT!!!
+            pre.hljs.bash.old
+              | $ echo 'bulbasaur chermander pikachu' | ?????
+              | → PROFIT!!!
       p
         | Go ahead checkout the docs on
         a(href="https://github.com/welldan97/gumba")
           |  GitHub
         |.
       p.center
-        a.btn.btn-large(href="https://github.com/welldan97/gumba")
-          i.icon-github-alt
+        a.btn.btn-default(href="https://github.com/welldan97/gumba")
+          != icon('github-alt')
           |  GitHub
         | &nbsp;
-        a.btn.btn-large.btn-primary(href="https://twitter.com/share?url=http%3A//gumba.welldan97.com/&text=Gumba%20-%20coffeescript%20and%20underscore.string%20right%20inside%20your%20command%20line")
-          i.icon-twitter
+        a.btn.btn-primary(href="https://twitter.com/share?url=http%3A//gumba.welldan97.com/&text=Gumba%20-%20coffeescript%20and%20underscore.string%20right%20inside%20your%20command%20line")
+          != icon('twitter')
           |  Share
-
-
-.credits
-  | Developed by&nbsp;
-  a(href="//#{config.domain}") welldan97
