@@ -6,7 +6,7 @@ module.exports.embedCSV = (path) ->
   convertToTable(csv)
 
 convertToTable = (csv) ->
-  csvElements = _.map _.filter(csv.split("\n"), _.isBlank), (row) ->
+  csvElements = _.map _.reject(csv.split("\n"), _.isBlank), (row) ->
     row.split ','
   head = "<tr><td>#{_.head(csvElements).join('</td><td>')}</td></tr>"
 
@@ -15,7 +15,6 @@ convertToTable = (csv) ->
     .map (row, i) ->
       "<tr><td>#{row.join('</td><td>')}</td></tr>"
     .value()
-
   """
   <table class="table no-outside-border table-bordered table-hover small-font">
     <tbody>
@@ -30,4 +29,4 @@ pathToFile = (path, page) ->
     .replace(page.basename, '')
     .replace(/\.[^.]+/, '')
 
-  "#{dir}/#{page.basename}/#{path}"
+  "#{dir}#{page.basename}/#{path}"
