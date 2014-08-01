@@ -1,10 +1,16 @@
 marked = require('marked')
 handlebars = require('handlebars')
 grunt = require('grunt')
+highlight = require('highlight.js').highlight
 _ = require('lodash')
 
 module.exports.bridgeMarkdown = ->
   content = grunt.file.read(pathToMdFile(context.page))
+
+  marked.setOptions
+    langPrefix: 'hljs '
+    highlight: (code, lang, cb) ->
+      highlight(lang, code).value
 
   withFakeContext (fakeContext) ->
     compileHandlebars(unescape(marked(content)), fakeContext)
