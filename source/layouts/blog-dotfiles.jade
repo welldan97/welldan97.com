@@ -10,8 +10,9 @@ pageHTMLClass: dotfiles
 .container-fluid.content
   .row
     .col-md-offset-2.col-md-8
-      {{> body }}
-  
+      pre.hljs
+        h1.hljs-title= title
+        {{> body }}
+
   .footer
-    a(href=shareOnTwitter(pageUrl(), title))
-      != icon('twitter')
+    a(href=shareOnTwitter(pageUrl(), title)) [Share on Twitter]
