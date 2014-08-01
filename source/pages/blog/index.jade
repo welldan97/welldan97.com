@@ -5,5 +5,7 @@ title: Blog
 h1 welldan97
   small blog
 
-for page in blogPages()
-  a(href="#{page.filename}")= page.data.title
+ul
+  for page in blogPages()
+    li
+      a(href="#{page.filename}")= page.data.title
