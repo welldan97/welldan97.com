@@ -4,5 +4,6 @@
     .container-fluid
       .row
        .col-md-offset-2.col-md-8
-         = description
+         p= description
+         p= formatDate(date)
   img.background(src=pageImagePath('cover'))
