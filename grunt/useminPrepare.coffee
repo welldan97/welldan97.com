@@ -1,5 +1,5 @@
 module.exports =
   options:
-    dest: '<%= config.build %>'
+    dest: '<%= config.productionBuild %>'
     root: '<%= config.build %>'
   html: '<%= config.build %>/{,**/}*.html'

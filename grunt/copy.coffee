@@ -26,6 +26,27 @@ module.exports =
       src:  '{,**/}*'
     ]
 
+  production:
+    files: [{
+      expand: true,
+      dot: true,
+      cwd: '<%= config.build %>'
+      dest: '<%= config.productionBuild %>'
+      src:  '{,**/}*.html'
+    }, {
+      expand: true,
+      dot: true,
+      cwd: '<%= config.build %>/assets/fonts'
+      dest: '<%= config.productionBuild %>/assets/fonts'
+      src:  '{,**/}*'
+    }, {
+      expand: true,
+      dot: true,
+      cwd: '<%= config.build %>/assets/images'
+      dest: '<%= config.productionBuild %>/assets/images'
+      src:  '{,**/}*'
+    }]
+
 
   bowerBootstrap:
     files: [

@@ -12,7 +12,7 @@ module.exports =
 
     files: [
       expand: true
-      cwd: '<%= config.build %>'
+      cwd: '<%= config.productionBuild %>'
       src: '{,**/}*.html'
-      dest: '<%= config.build %>'
+      dest: '<%= config.productionBuild %>'
     ]

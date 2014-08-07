@@ -10,11 +10,11 @@ module.exports =
     middleware: (connect, options) ->
       [subdomainsMiddleware(grunt.config.data.config.domain)]
         .concat(defaultMiddlewares(connect, options))
-  main:
+  development:
     options:
       base: '<%= config.build %>'
 
-  keepalive:
+  production:
     options:
       keepalive: true
-      base: '<%= config.build %>'
+      base: '<%= config.productionBuild %>'

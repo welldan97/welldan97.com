@@ -18,13 +18,14 @@ module.exports = (grunt) ->
     grunt.registerTask 'build', [
       'coffeelint'
       'buildCore'
-      'autoprefixer'
       'useminPrepare'
       'concat'
       'cssmin'
       'uglify'
+      'copy:production'
       'filerev'
       'usemin'
+      'autoprefixer'
       'htmlmin'
     ]
   else
@@ -46,12 +47,12 @@ module.exports = (grunt) ->
   if isEnvironment('production')
     grunt.registerTask 'serve', [
       'build'
-      'connect:keepalive'
+      'connect:production'
     ]
   else
     grunt.registerTask 'serve', [
       'build'
-      'connect:main'
+      'connect:development'
       'watch'
     ]
 

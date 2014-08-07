@@ -1,8 +1,16 @@
+isEnvironment = require('../lib/commons').isEnvironment
+
+build = if isEnvironment('development')
+  'build'
+else
+  'temp/build'
+
 module.exports =
   source: 'source'
-  build:  'build'
+  build: build
+  productionBuild: 'build'
   vendor: 'vendor'
-  temp:   'temp'
+  temp: 'temp'
   domain: 'welldan97.dev'
 
   port: 9000

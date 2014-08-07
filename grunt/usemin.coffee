@@ -1,7 +1,7 @@
 module.exports =
   options:
-    assetsDirs: ['<%= config.build %>',]
+    assetsDirs: ['<%= config.productionBuild %>',]
 
-    dest: '<%= config.build %>'
-  html: ['<%= config.build %>/{,**/}*.html'],
-  css: ['<%= config.build %>/assets/stylesheets/{,**/}*.css']
+    dest: '<%= config.productionBuild %>'
+  html: ['<%= config.productionBuild %>/{,**/}*.html'],
+  css: ['<%= config.productionBuild %>/assets/stylesheets/{,**/}*.css']

@@ -4,7 +4,7 @@ module.exports =
   main:
     files: [
       expand: true,
-      cwd: '<%= config.build %>/assets'
+      cwd: '<%= config.productionBuild %>/assets'
       src: '{,**/}*.css',
-      dest: '<%= config.build %>/assets'
+      dest: '<%= config.productionBuild %>/assets'
     ]
