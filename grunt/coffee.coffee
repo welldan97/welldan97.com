@@ -1,6 +1,8 @@
+isEnvironment = require('../lib/commons').isEnvironment
+
 module.exports =
   options:
-    sourceMap: true
+    sourceMap: isEnvironment('development')
   main:
     files: [
       expand: true
