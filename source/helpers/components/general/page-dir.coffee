@@ -1,5 +1,5 @@
-module.exports.pageDir = ->
-  page = context.page
+module.exports.pageDir = (maybePage) ->
+  page = maybePage || context.page
   dirname = page.dirname
     .replace(new RegExp("#{context.config.build}/?"), '')
     .replace('/', '-')
