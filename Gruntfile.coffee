@@ -1,8 +1,9 @@
+isEnvironment = require('./lib/commons').isEnvironment
+
 module.exports = (grunt) ->
   require('load-grunt-tasks')(grunt)
   require('load-grunt-config')(grunt)
   require('time-grunt')(grunt)
-
   grunt.loadNpmTasks 'assemble'
 
   grunt.registerTask 'copyBowerFiles', [
@@ -13,20 +14,23 @@ module.exports = (grunt) ->
     'copy:bowerLodash'
   ]
 
-  grunt.registerTask 'build:production', [
-    'coffeelint'
-    'build:development'
-    'autoprefixer'
-    'useminPrepare'
-    'concat'
-    'cssmin'
-    'uglify'
-    'filerev'
-    'usemin'
-    'htmlmin'
-  ]
+  if isEnvironment('production')
+    grunt.registerTask 'build', [
+      'coffeelint'
+      'buildCore'
+      'autoprefixer'
+      'useminPrepare'
+      'concat'
+      'cssmin'
+      'uglify'
+      'filerev'
+      'usemin'
+      'htmlmin'
+    ]
+  else
+    grunt.registerTask 'build', 'buildCore'
 
-  grunt.registerTask 'build:development', [
+  grunt.registerTask 'buildCore', [
     'clean'
 
     'copyBowerFiles'
@@ -39,15 +43,16 @@ module.exports = (grunt) ->
     'assemble'
   ]
 
-  grunt.registerTask 'serve', [
-    'build:development'
-    'connect:main'
-    'watch'
-  ]
-
-  grunt.registerTask 'preview', [
-    'build:production'
-    'connect:keepalive'
-  ]
+  if isEnvironment('production')
+    grunt.registerTask 'serve', [
+      'build'
+      'connect:keepalive'
+    ]
+  else
+    grunt.registerTask 'serve', [
+      'build'
+      'connect:main'
+      'watch'
+    ]
 
   grunt.registerTask 'default', 'serve'
