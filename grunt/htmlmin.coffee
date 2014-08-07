@@ -2,7 +2,6 @@ module.exports =
   main:
     options:
       collapseBooleanAttributes: true
-      collapseWhitespace: true
       removeAttributeQuotes: true
       removeCommentsFromCDATA: true
       removeEmptyAttributes: true
