@@ -31,7 +31,7 @@ module.exports.pageAssets = (type, element) ->
     pageSpecificAssetsHTML = if _.any(pageSpecificAssets)
       """
 
-      <!-- build:#{ext(type)} #{pageSpecificPath()}.#{ext(type)} -->
+      <!-- build:#{ext(type)} #{pageSpecificPath(type)}.#{ext(type)} -->
         #{pageSpecificAssets.map(element).join('\n')}
       <!-- endbuild -->
       """
@@ -40,9 +40,9 @@ module.exports.pageAssets = (type, element) ->
     assetsHTML + pageSpecificAssetsHTML
 
 
-pageSpecificPath = ->
-  filename = "#{context.page.dirname}/#{context.page.basename}"
-  "/assets/pages/#{filename}"
+pageSpecificPath = (type) ->
+  filename = context.pageDir().join('-')
+  "/assets/#{type}/#{filename}"
 
 ext = (type) ->
   {
