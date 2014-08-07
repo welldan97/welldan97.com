@@ -26,6 +26,15 @@ module.exports =
       src:  '{,**/}*'
     ]
 
+  public:
+    files: [
+      expand: true
+      dot: true
+      cwd: 'source/public'
+      dest: '<%= config.productionBuild %>'
+      src:  '{,**/}*'
+    ]
+
   production:
     files: [{
       expand: true,

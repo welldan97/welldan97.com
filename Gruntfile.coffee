@@ -18,6 +18,7 @@ module.exports = (grunt) ->
     grunt.registerTask 'build', [
       'coffeelint'
       'buildCore'
+      'copy:public'
       'useminPrepare'
       'concat'
       'cssmin'
