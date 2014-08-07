@@ -1,3 +1,4 @@
+isEnvironment = require('../../../../lib/commons').isEnvironment
 _ = require('lodash')
 fs = require('fs')
 
@@ -56,7 +57,7 @@ cacheAndVerify = (name, data, cb) ->
   fs.mkdirSync dir unless fs.existsSync dir
   path = "#{dir}/#{name}"
 
-  if fs.existsSync path
+  if (fs.existsSync path) && isEnvironment('production')
     storedData = fs.readFileSync path, 'utf8'
     unless JSON.stringify(data) == storedData
       throw new Error("Cached \"#{name}\" is not the same")
