@@ -1,3 +1,3 @@
-  module.exports.pageJavascripts = (concatName) ->
-    context.pageAssets concatName, 'javascripts', (javascript) ->
+  module.exports.pageJavascripts = ->
+    context.pageAssets 'javascripts', (javascript) ->
       "<script src=\"/assets/javascripts/#{javascript}.js\"></script>"
