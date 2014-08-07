@@ -7,13 +7,12 @@ module.exports =
     port: '<%= config.port %>'
     base: '<%= config.build %>'
     livereload: 35729
-
+    middleware: (connect, options) ->
+      [subdomainsMiddleware(grunt.config.data.config.domain)]
+        .concat(defaultMiddlewares(connect, options))
   main:
     options:
       base: '<%= config.build %>'
-      middleware: (connect, options) ->
-        [subdomainsMiddleware(grunt.config.data.config.domain)]
-          .concat(defaultMiddlewares(connect, options))
 
   keepalive:
     options:
