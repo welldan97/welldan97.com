@@ -19,6 +19,7 @@ module.exports = (grunt) ->
       'coffeelint'
       'buildCore'
       'copy:public'
+      'imagemin'
       'useminPrepare'
       'concat'
       'cssmin'
