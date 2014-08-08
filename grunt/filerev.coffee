@@ -5,5 +5,4 @@ module.exports =
       '<%= config.productionBuild %>/assets/stylesheets/{,*/}*.css',
       '<%= config.productionBuild %>/assets/images/{,*/}*.*',
       # '<%= config.productionBuild %>/assets/fonts/{,*/}*.*', # TODO
-      '<%= config.productionBuild %>/*.{ico,png}'
     ]
