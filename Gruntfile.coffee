@@ -17,8 +17,10 @@ module.exports = (grunt) ->
   if isEnvironment('production')
     grunt.registerTask 'build', [
       'coffeelint'
+
       'buildCore'
       'copy:public'
+
       'imagemin'
       'useminPrepare'
       'concat'
