@@ -31,6 +31,7 @@ module.exports = (grunt) ->
       'usemin'
       'autoprefixer'
       'htmlmin'
+      'compress'
     ]
   else
     grunt.registerTask 'build', 'buildCore'
