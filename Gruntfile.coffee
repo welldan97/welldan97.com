@@ -61,4 +61,8 @@ module.exports = (grunt) ->
       'watch'
     ]
 
+  grunt.registerTask 'deploy', [
+    'copy:deploy'
+  ]
+
   grunt.registerTask 'default', 'serve'

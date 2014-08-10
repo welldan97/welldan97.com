@@ -1,0 +1,11 @@
+{
+  "name": "welldan97-deploy",
+  "version": "0.0.0",
+  "description": "",
+  "author": "welldan97",
+  "license": "MIT",
+  "dependencies": {
+    "connect": "^3.1.0",
+    "serve-static": "^1.5.1"
+  }
+}

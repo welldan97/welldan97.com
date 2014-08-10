@@ -56,6 +56,21 @@ module.exports =
       src:  '{,**/}*'
     }]
 
+  deploy:
+    files: [{
+      expand: true,
+      dot: true,
+      cwd: '<%= config.productionBuild %>'
+      dest: '<%= config.deploy %>/site'
+      src:  '{,**/}*'
+    }, {
+      expand: true,
+      dot: true,
+      cwd: '<%= config.source %>/deploy'
+      dest: '<%= config.deploy %>'
+      src:  '{,**/}*'
+    }]
+
 
   bowerBootstrap:
     files: [

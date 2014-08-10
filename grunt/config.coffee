@@ -12,5 +12,5 @@ module.exports =
   vendor: 'vendor'
   temp: 'temp'
   domain: 'welldan97.dev'
-
+  deploy: 'temp/deploy'
   port: 9000
