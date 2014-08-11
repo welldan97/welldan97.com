@@ -64,6 +64,8 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'deploy', [
     'copy:deploy'
+    'bootstrapHeroku'
+    'deployHeroku'
   ]
 
   grunt.registerTask 'default', 'serve'
