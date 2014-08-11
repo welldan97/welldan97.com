@@ -28,7 +28,7 @@ createApp = (app) ->
   if _.contains(apps, app)
     null
     execSync "heroku apps:destroy #{app} --confirm #{app}"
-  execSync "heroku apps:create #{app}"
+  execSync "heroku apps:create #{app} -n"
 
 addDomains = (app, domains) ->
   _.each domains, (domain) ->
