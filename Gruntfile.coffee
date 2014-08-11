@@ -4,6 +4,7 @@ module.exports = (grunt) ->
   require('load-grunt-tasks')(grunt)
   require('load-grunt-config')(grunt)
   require('time-grunt')(grunt)
+  grunt.loadTasks('./lib/grunt')
   grunt.loadNpmTasks 'assemble'
 
   grunt.registerTask 'copyBowerFiles', [

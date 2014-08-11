@@ -8,6 +8,7 @@
     "assemble": "git://github.com/welldan97/assemble",
     "assemble-jade": "^0.1.6",
     "coffee-script": "^1.7.1",
+    "exec-sync": "^0.1.6",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^0.7.6",
     "grunt-coffeelint": "0.0.10",

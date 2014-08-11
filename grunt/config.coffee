@@ -11,6 +11,11 @@ module.exports =
   productionBuild: 'build'
   vendor: 'vendor'
   temp: 'temp'
-  domain: 'welldan97.dev'
   deploy: 'temp/deploy'
+
   port: 9000
+  domain: 'welldan97.dev'
+  heroku:
+    auth: process.env.HEROKU_AUTH
+    app: process.env.HEROKU_APP
+    apiKey: process.env.HEROKU_API_KEY
