@@ -5,6 +5,11 @@ build = if isEnvironment('development')
 else
   'temp/build'
 
+domain = if isEnvironment('development')
+  'welldan97.dev'
+else
+  'welldan97.com'
+
 module.exports =
   source: 'source'
   build: build
@@ -14,8 +19,7 @@ module.exports =
   deploy: 'temp/deploy'
 
   port: 9000
-  domain: 'welldan97.dev'
+  domain: domain
   heroku:
     auth: process.env.HEROKU_AUTH
     app: process.env.HEROKU_APP
-    apiKey: process.env.HEROKU_API_KEY

@@ -1,16 +1,21 @@
-execSync = require('exec-sync')
+execSyncSilent = require('exec-sync')
+_ = require('lodash')
+
+execSync = null
 
 module.exports = (grunt) ->
+  execSync = execSyncVerbose(grunt.log.write)
+
   grunt.registerMultiTask 'bootstrapHeroku',
     'Bootstrap Heroku for deploying',
     ->
       throw new Error('Please specify "auth"') unless @data.auth
       throw new Error('Please specify "app"') unless @data.app
-      throw new Error('Please specify "apiKey"') unless @data.apiKey
 
       verifyAuth grunt, @data.auth
       createApp @data.app
-      setDomains @data.app
+      addDomains @data.app, @data.domains
+
       grunt.log.write('Successfully bootstrapped Heroku')
 
 verifyAuth = (grunt, auth) ->
@@ -18,9 +23,25 @@ verifyAuth = (grunt, auth) ->
   throw new Error("Please authenticate as #{auth}") if currentAuth != auth
 
 createApp = (app) ->
-  # TODO: List apps first
-  execSync "heroku apps:destroy #{app} --confirm #{app}"
+  apps = execSync('heroku apps').split('\n').slice(1,-1)
+
+  if _.contains(apps, app)
+    null
+    execSync "heroku apps:destroy #{app} --confirm #{app}"
   execSync "heroku apps:create #{app}"
 
-setDomains = (app) ->
-  # TODO
+addDomains = (app, domains) ->
+  _.each domains, (domain) ->
+    execSync("heroku domains:add #{domain}")
+
+execSyncVerbose = (log) ->
+  (command) ->
+    output = execSyncSilent(command)
+    log """
+      $ #{command}
+      #{output}
+
+
+    """
+
+    output
