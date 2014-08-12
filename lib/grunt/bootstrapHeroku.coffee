@@ -1,5 +1,5 @@
-execSyncSilent = require('exec-sync')
 _ = require('lodash')
+execSyncVerbose = require('../exec-sync-verbose')
 
 execSync = null
 
@@ -33,15 +33,3 @@ createApp = (app) ->
 addDomains = (app, domains) ->
   _.each domains, (domain) ->
     execSync("heroku domains:add #{domain}")
-
-execSyncVerbose = (log) ->
-  (command) ->
-    output = execSyncSilent(command)
-    log """
-      $ #{command}
-      #{output}
-
-
-    """
-
-    output

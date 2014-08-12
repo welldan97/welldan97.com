@@ -2,8 +2,8 @@ connect = require('connect')
 http = require('http')
 serveStatic = require('serve-static')
 
-PORT = 9000
-DOMAIN = 'welldan97.dev'
+PORT = process.env.PORT
+DOMAIN = 'welldan97.com'
 
 app = connect()
 
