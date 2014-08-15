@@ -5,7 +5,7 @@ build = if isEnvironment('development')
 else
   'temp/build'
 
-domain = if isEnvironment('development')
+domain = process.env.DOMAIN || if isEnvironment('development')
   'welldan97.dev'
 else
   'welldan97.com'
