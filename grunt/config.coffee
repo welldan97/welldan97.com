@@ -23,3 +23,6 @@ module.exports =
   heroku:
     auth: process.env.HEROKU_AUTH
     app: process.env.HEROKU_APP
+
+  googleAnalytics:
+    userId: process.env.GA_USER_ID
