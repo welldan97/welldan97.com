@@ -16,7 +16,7 @@ module.exports =
   productionBuild: 'build'
   vendor: 'vendor'
   temp: 'temp'
-  deploy: 'temp/deploy'
+  deploy: 'deploy'
 
   port: 9000
   domain: domain

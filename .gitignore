@@ -4,5 +4,6 @@ temp
 bower_components
 source/pages/blog/markdown
 source/images
+deploy
 .tmp
 .envrc
