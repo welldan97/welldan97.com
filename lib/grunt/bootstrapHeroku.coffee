@@ -15,6 +15,7 @@ module.exports = (grunt) ->
       verifyAuth grunt, @data.auth
       createApp @data.app
       addDomains @data.app, @data.domains
+      setConfigVariables @data.app, @data.config
 
       grunt.log.write('Successfully bootstrapped Heroku')
 
@@ -33,3 +34,7 @@ createApp = (app) ->
 addDomains = (app, domains) ->
   _.each domains, (domain) ->
     execSync("heroku domains:add #{domain}")
+
+setConfigVariables = (app, config) ->
+  _.each config, (v, k) ->
+    execSync "heroku config:set #{k}=\"#{v}\" --app #{app}"
