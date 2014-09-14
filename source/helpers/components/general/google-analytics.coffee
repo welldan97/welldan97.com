@@ -4,6 +4,7 @@ module.exports.googleAnalytics = (userId) ->
   return '' if isEnvironment('development')
 
   """
+
   <script>
     (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -19,7 +20,7 @@ module.exports.googleAnalytics = (userId) ->
        document,
        'script',
        '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', #{userId}, 'auto');
+    ga('create', '#{userId}', 'auto');
 
     ga('send', 'pageview');
   </script>
